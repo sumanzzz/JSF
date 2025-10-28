@@ -18,14 +18,18 @@
         String emailRegex = "^[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]{2,}$";
 
         // Validation checks
-        if(!name.matches(nameRegex)) {
+        if(!name.matches(nameRegex)||name==null) {
             valid = false;
-            errors.add("Name must contain only alphabets and spaces.");
+            errors.add("Name cannot be empty and must contain only alphabets and spaces.");
         }
 
         if(!email.matches(emailRegex)) {
             valid = false;
             errors.add("Invalid email (ex: example@domain.com) — only letters and numbers allowed.");
+        }
+        if(department.trim().isEmpty()){
+        	valid = false;
+        	errors.add("Please select an valid department");
         }
 
         if(age < 18 || age > 65) {
@@ -77,4 +81,5 @@
         }
     }
 %>
+
 
